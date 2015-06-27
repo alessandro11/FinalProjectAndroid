@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">FinalProjectAndroid</string>
+    <string name="logo_description">PartyMob</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="cadastro"><u>Ainda não cadastrado, clique aqui!</u></string>
+    <string name="loginExterno"><u>Entrar com conta externa!</u></string>
+
+    <string name="email">Email</string>
+    <string name="password">Senha</string>
+
+    <string name="password_confirmation">Confirmar Senha</string>
+    <string name="signup_label">Cadastrar!</string>
+    <string name="SignupName">Nome</string>
+</resources>
