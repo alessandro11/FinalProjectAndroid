@@ -48,7 +48,8 @@ public class LoginMain extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(login, MapLocation.class);
+//                intent.setClass(login, MapLocation.class);
+                intent.setClass(login, MainActivity.class);
                 startActivity(intent);
             }
         });
