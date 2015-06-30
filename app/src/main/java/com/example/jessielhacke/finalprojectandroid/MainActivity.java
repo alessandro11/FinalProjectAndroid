@@ -1,6 +1,5 @@
 package com.example.jessielhacke.finalprojectandroid;
 
-
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.app.Service;
