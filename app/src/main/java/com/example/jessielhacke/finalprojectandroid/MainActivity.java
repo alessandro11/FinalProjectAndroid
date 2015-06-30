@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
@@ -243,5 +244,13 @@ public class MainActivity extends ListActivity {
 
             return rowView;
         }
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+        Profile profile = (Profile)getListAdapter().getItem(position);
+        Log.i("PROFILES", profile.getName() + ", id=" + profile.getId());
     }
 }
