@@ -13,4 +13,5 @@
     <string name="password_confirmation">Confirmar Senha</string>
     <string name="signup_label">Cadastrar!</string>
     <string name="SignupName">Nome</string>
+    <string name="URLServer">http://10.254.221.251/</string>
 </resources>

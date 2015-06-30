@@ -5,7 +5,7 @@
     android:layout_height="match_parent" >
 
     <ImageView
-        android:id="@+id/row_icon"
+        android:id="@+id/picture"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_alignParentLeft="true"
@@ -13,8 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="6dp"
         android:layout_marginLeft="6dp"
-        android:layout_marginStart="6dp"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_marginStart="6dp" />
 
     <TextView
         android:id="@+id/name"
@@ -25,14 +24,13 @@
         android:layout_marginStart="6dp"
         android:layout_marginBottom="6dp"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/row_icon"
-        android:text="Alessandro Elias" />
+        android:layout_below="@+id/picture" />
 
     <TextView
         android:id="@+id/distance"
-        android:layout_width="wrap_content"
+        android:layout_width="32dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="18dp"
         android:layout_marginLeft="6dp"
         android:layout_marginStart="6dp"
         android:layout_marginBottom="6dp"
@@ -40,6 +38,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toLeftOf="@+id/name"
-        android:layout_toStartOf="@+id/name"
-        android:text="100m" />
+        android:layout_toStartOf="@+id/name" />
+
 </RelativeLayout>
