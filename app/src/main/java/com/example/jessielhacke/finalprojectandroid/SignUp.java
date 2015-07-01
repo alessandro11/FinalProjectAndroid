@@ -2,6 +2,7 @@ package com.example.jessielhacke.finalprojectandroid;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -103,6 +104,10 @@ public class SignUp extends Activity {
         protected void onPostExecute(String ret) {
             super.onPostExecute(ret);
             Log.d("DBG", ret);
+            finish();
+            Intent intent = new Intent(SignUp.this, MainActivity.class);
+            startActivity(intent);
+
         }
     }
 

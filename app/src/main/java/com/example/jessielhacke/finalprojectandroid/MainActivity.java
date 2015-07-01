@@ -169,7 +169,10 @@ public class MainActivity extends ListActivity {
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);
-            bmImage.setImageBitmap(bitmap);
+
+            if( bitmap == null ) {
+                bmImage.setImageDrawable(getResources().getDrawable(R.drawable.nopicture));
+            }else bmImage.setImageBitmap(bitmap);
         }
     }
 
