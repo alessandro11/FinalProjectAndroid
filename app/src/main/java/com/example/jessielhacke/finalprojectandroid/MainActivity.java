@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.app.Service;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -256,6 +257,13 @@ public class MainActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Profile profile = (Profile)getListAdapter().getItem(position);
         Log.d("DBG", profile.getName() + ", id=" + profile.getId());
+
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.PROFILE");
+        intent.putExtra("profile_id", profile.getId());
+        intent.putExtra("profile_name", profile.getName());
+        startActivity(intent);
+
         super.onListItemClick(l, v, position, id);
     }
 }
