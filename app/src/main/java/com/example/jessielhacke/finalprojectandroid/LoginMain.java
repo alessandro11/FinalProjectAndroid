@@ -44,16 +44,8 @@ public class LoginMain extends Activity {
         final TextView vEmail = (TextView)findViewById(R.id.emailLogin);
         final TextView vPass = (TextView)findViewById(R.id.passwordLogin);
 
-        TextView externalLogin = (TextView) findViewById(R.id.externalLogin);
         final LoginMain login = this;
-        externalLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(login, ExternalLogin.class);
-                startActivity(intent);
-            }
-        });
+
         TextView signup = (TextView) findViewById(R.id.newUser);
 
         signup.setOnClickListener(new View.OnClickListener() {
