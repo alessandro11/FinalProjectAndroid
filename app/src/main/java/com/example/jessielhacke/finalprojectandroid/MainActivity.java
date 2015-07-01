@@ -25,6 +25,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,14 +37,43 @@ import java.util.List;
 
 public class MainActivity extends ListActivity {
     public static int USER_ID;
-
     private ProgressDialog progressDialog;
     private GPSTracker gps = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         gps = new GPSTracker(this);
+    }
+
+    private class PostLatLon extends AsyncTask<Double, Void, Void> {
+        @Override
+        protected Void doInBackground(Double ...param) {
+            HttpClient client = new DefaultHttpClient();
+            String postURL = getResources().getString(R.string.URLServer) + "/update_lat_lon.php";
+            HttpPost post = new HttpPost(postURL);
+            try {
+                List<NameValuePair> pairs = new ArrayList<NameValuePair>(3);
+                pairs.add(new BasicNameValuePair("ID", String.valueOf(USER_ID)));
+                pairs.add(new BasicNameValuePair("LAT", String.valueOf(param[0])));
+                pairs.add(new BasicNameValuePair("LON", String.valueOf(param[1])));
+                UrlEncodedFormEntity uefe = new UrlEncodedFormEntity(pairs);
+                post.setEntity(uefe);
+                // Send post.
+                HttpResponse res = client.execute(post);
+                if( res != null )
+                    Log.d("DBG", EntityUtils.toString(res.getEntity()));
+            } catch( UnsupportedEncodingException uee ) {
+                uee.printStackTrace();
+            } catch( ClientProtocolException cpe ) {
+                cpe.printStackTrace();
+            } catch( IOException ioe ) {
+                ioe.printStackTrace();
+            }
+
+            return null;
+        }
     }
 
     @Override
@@ -54,6 +84,7 @@ public class MainActivity extends ListActivity {
         progressDialog.setMessage("Carregando...");
         progressDialog.show();
         new Post().execute(getResources().getString(R.string.URLServer) + "users.php");
+        new PostLatLon().execute(gps.getLatitude(), gps.getLongitude());
     }
 
     private class Profile {

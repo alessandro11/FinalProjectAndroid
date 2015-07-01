@@ -35,6 +35,7 @@ import java.util.List;
  */
 public class LoginMain extends Activity {
     private ProgressDialog progressDialog;
+    private int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,9 +97,10 @@ public class LoginMain extends Activity {
                 HttpResponse res = client.execute(post);
                 String strRes = EntityUtils.toString(res.getEntity());
                 Log.d("DBG", "strRes=" + strRes);
+                strRes = strRes.replaceAll("\n", "");
                 String parsed[] = strRes.split(",");
-                MainActivity.USER_ID = Integer.parseInt(parsed[1]);
-                succed = ( res != null && parsed[0].compareTo("1") == 1 );
+                userId = Integer.parseInt(parsed[1]);
+                succed = ( res != null && parsed[0].compareTo("1") == 0 );
             } catch( UnsupportedEncodingException uee ) {
                 uee.printStackTrace();
             } catch( ClientProtocolException cpe ) {
@@ -116,6 +118,7 @@ public class LoginMain extends Activity {
             if( succ ) {
                 Intent intent = new Intent(LoginMain.this, MainActivity.class);
                 startActivity(intent);
+                MainActivity.USER_ID = userId;
             }else Toast.makeText(LoginMain.this, "Email ou senha incorreta.", Toast.LENGTH_SHORT).show();
             progressDialog.dismiss();
         }

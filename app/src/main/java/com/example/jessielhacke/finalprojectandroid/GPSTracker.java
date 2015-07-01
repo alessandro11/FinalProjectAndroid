@@ -34,7 +34,6 @@ import java.util.List;
  * Created by ae11 on 7/1/15.
  */
 public class GPSTracker extends Service implements LocationListener {
-
     private final Context mContext;
 
     // flag for GPS status
@@ -58,6 +57,7 @@ public class GPSTracker extends Service implements LocationListener {
 
     // Declaring a Location Manager
     protected LocationManager locationManager;
+
 
     public GPSTracker(Context context) {
         this.mContext = context;
@@ -203,34 +203,6 @@ public class GPSTracker extends Service implements LocationListener {
         latitude = location.getLatitude();
         longitude = location.getLongitude();
         Log.d("DBG", "changed LAT=" + latitude + ", LON=" + longitude);
-    }
-
-    private class Post extends AsyncTask<Double, Void, Void> {
-        @Override
-        protected Void doInBackground(Double ...param) {
-            HttpClient client = new DefaultHttpClient();
-            String postURL = getResources().getString(R.string.URLServer) + "/update.php";
-            HttpPost post = new HttpPost(postURL);
-            try {
-                List<NameValuePair> pairs = new ArrayList<NameValuePair>(2);
-                pairs.add(new BasicNameValuePair("LAT", String.valueOf(param[0])));
-                pairs.add(new BasicNameValuePair("LON", String.valueOf(param[1])));
-                UrlEncodedFormEntity uefe = new UrlEncodedFormEntity(pairs);
-                post.setEntity(uefe);
-                // Send post.
-                HttpResponse res = client.execute(post);
-                if( res != null )
-                    Log.d("DBG", EntityUtils.toString(res.getEntity()));
-            } catch( UnsupportedEncodingException uee ) {
-                uee.printStackTrace();
-            } catch( ClientProtocolException cpe ) {
-                cpe.printStackTrace();
-            } catch( IOException ioe ) {
-                ioe.printStackTrace();
-            }
-
-            return null;
-        }
     }
 
     @Override
