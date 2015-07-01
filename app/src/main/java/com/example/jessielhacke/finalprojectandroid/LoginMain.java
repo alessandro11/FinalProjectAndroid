@@ -25,7 +25,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,9 +59,9 @@ public class LoginMain extends Activity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(login, SignUp.class);
-                startActivity(intent);
+            Intent intent = new Intent();
+            intent.setClass(login, SignUp.class);
+            startActivity(intent);
             }
         });
 
@@ -95,7 +94,11 @@ public class LoginMain extends Activity {
                 post.setEntity(uefe);
                 // Send post.
                 HttpResponse res = client.execute(post);
-                succed = ( res != null && EntityUtils.toString(res.getEntity()).compareTo("1") == 1 );
+                String strRes = EntityUtils.toString(res.getEntity());
+                Log.d("DBG", "strRes=" + strRes);
+                String parsed[] = strRes.split(",");
+                MainActivity.USER_ID = Integer.parseInt(parsed[1]);
+                succed = ( res != null && parsed[0].compareTo("1") == 1 );
             } catch( UnsupportedEncodingException uee ) {
                 uee.printStackTrace();
             } catch( ClientProtocolException cpe ) {

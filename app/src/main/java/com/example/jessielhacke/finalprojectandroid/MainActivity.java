@@ -35,11 +35,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends ListActivity {
+    public static int USER_ID;
+
     private ProgressDialog progressDialog;
+    private GPSTracker gps = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        gps = new GPSTracker(this);
     }
 
     @Override
@@ -250,9 +254,8 @@ public class MainActivity extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-
         Profile profile = (Profile)getListAdapter().getItem(position);
-        Log.i("PROFILES", profile.getName() + ", id=" + profile.getId());
+        Log.d("DBG", profile.getName() + ", id=" + profile.getId());
+        super.onListItemClick(l, v, position, id);
     }
 }
