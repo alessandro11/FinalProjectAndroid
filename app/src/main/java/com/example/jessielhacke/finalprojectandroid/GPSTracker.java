@@ -209,7 +209,7 @@ public class GPSTracker extends Service implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        latitude = location.getLatitude();
+        latitude  = location.getLatitude();
         longitude = location.getLongitude();
         Log.d("DBG", "changed LAT=" + latitude + ", LON=" + longitude);
         new PostLatLon().execute(latitude, longitude);
@@ -222,6 +222,7 @@ public class GPSTracker extends Service implements LocationListener {
             String postURL ="http://10.254.221.251/update_lat_lon.php";
             HttpPost post = new HttpPost(postURL);
             try {
+                Log.d("DBG", "Updating ID=" + userId + ", LAT=" + String.valueOf(param[0]) + ", LON=" + String.valueOf(param[1]));
                 List<NameValuePair> pairs = new ArrayList<NameValuePair>(3);
                 pairs.add(new BasicNameValuePair("ID", String.valueOf(userId)));
                 pairs.add(new BasicNameValuePair("LAT", String.valueOf(param[0])));

@@ -1,1 +1,208 @@
 07-01 18:17:26.059  32639-32639/com.example.jessielhacke.finalprojectandroid D/DBG﹕ changed LAT=-25.4506448, LON=-49.2319275
+
+-25.4506448  -49.2319275
+-23.4506448  -41.2319275
+25.4506448   41.2319275
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DDDDDD"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    >
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/default_pic"
+                android:scaleType="fitXY"
+                android:contentDescription="Main Image"
+                android:padding="1dp"
+                android:id="@+id/pic" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/image_border"
+                android:contentDescription="Image Border"
+                android:padding="0dp"/>
+
+            <ImageView
+                android:visibility="invisible"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="image"
+                android:clickable="true"
+                android:padding="4dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/edit_states"
+                android:src="@drawable/ic_action_edit"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
+                android:id="@+id/profileName"
+                android:hint="Nome"
+                android:paddingTop="6dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="6dp"
+                android:textSize="18sp"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:visibility="invisible"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="image"
+                android:clickable="true"
+                android:padding="4dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/edit_states"
+                android:src="@drawable/ic_action_edit"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
+                android:hint="Distancia"
+                android:paddingTop="6dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="6dp"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:id="@+id/profileDistance" />
+
+            <ImageView
+                android:visibility="invisible"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="image"
+                android:clickable="true"
+                android:padding="4dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/edit_states"
+                android:src="@drawable/ic_action_edit"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="0.50"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
+                android:hint="Longitude"
+                android:paddingTop="6dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="6dp"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:visibility="visible" />
+
+            <ImageView
+                android:visibility="invisible"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="image"
+                android:clickable="true"
+                android:padding="4dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/edit_states"
+                android:src="@drawable/ic_action_edit"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="0.50"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border"
+                android:hint="Telefone"
+                android:paddingTop="6dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="6dp"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:text="..."
+                android:id="@+id/test" />
+
+            <ImageView
+                android:visibility="invisible"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="image"
+                android:clickable="true"
+                android:padding="4dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/edit_states"
+                android:src="@drawable/ic_action_edit"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                />
+        </RelativeLayout>
+    </GridLayout>
+
+</ScrollView>

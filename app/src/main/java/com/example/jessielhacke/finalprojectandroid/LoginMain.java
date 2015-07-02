@@ -88,7 +88,7 @@ public class LoginMain extends Activity {
                 // Send post.
                 HttpResponse res = client.execute(post);
                 String strRes = EntityUtils.toString(res.getEntity());
-                Log.d("DBG", "strRes=" + strRes);
+                Log.d("DBG", "SERVER RESPONSE:\nID=" + strRes.split(",")[1] + ", SUCCED=" + strRes.split(",")[0]);
                 strRes = strRes.replaceAll("\n", "");
                 String parsed[] = strRes.split(",");
                 userId = Integer.parseInt(parsed[1]);
@@ -112,7 +112,9 @@ public class LoginMain extends Activity {
                 startActivity(intent);
                 MainActivity.USER_ID = userId;
             }else Toast.makeText(LoginMain.this, "Email ou senha incorreta.", Toast.LENGTH_SHORT).show();
-            progressDialog.dismiss();
+
+            progressDialog.cancel();
+            finish();
         }
     }
 

@@ -125,7 +125,7 @@ public class MainActivity extends ListActivity {
 
             // Parse entries
             List<Profile> profiles = new CSVParser(is).parser();
-            //Log.i("PROFILES", String.valueOf(profiles.size()));
+            //Log.D("DBG", "profiles.size()=" + String.valueOf(profiles.size()));
             if( profiles.size() > 0 ) {
                 MyArrayAdapter aa = new MyArrayAdapter(MainActivity.this, profiles);
                 setListAdapter(aa);
@@ -232,7 +232,7 @@ public class MainActivity extends ListActivity {
 
             Profile p = (Profile)profiles.get(position);
             name.setText(p.getName());
-            distance.setText(String.valueOf(p.getDistance()));
+            distance.setText(String.valueOf(p.getDistance()) + " Km");
 
             new GetPicture(img).execute(getResources().getString(R.string.URLServer) + p.getId());
 

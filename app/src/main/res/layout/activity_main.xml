@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/picture"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -24,20 +24,22 @@
         android:layout_marginStart="6dp"
         android:layout_marginBottom="6dp"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/picture" />
+        android:textSize="15sp"
+        android:layout_below="@+id/picture"
+        android:text="Alessandro" />
 
     <TextView
         android:id="@+id/distance"
-        android:layout_width="32dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="6dp"
         android:layout_marginRight="6dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toLeftOf="@+id/name"
-        android:layout_toStartOf="@+id/name" />
+        android:layout_toStartOf="@+id/name"
+        android:textSize="15sp"
+        android:gravity="end"
+        android:layout_below="@+id/picture" />
 
 </RelativeLayout>
