@@ -56,14 +56,13 @@ public class MainActivity extends ListActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Carregando...");
         progressDialog.show();
-        new Post().execute(getResources().getString(R.string.URLServer) + "users.php");
+        new Post().execute(getResources().getString(R.string.URLServer) + "users.php", String.valueOf(USER_ID));
     }
 
     private class Profile {
         private int id;
         private String name;
-        private int lat, lon;
-        private int distance;
+        private float distance;
 
         public int getId() {
             return id;
@@ -81,27 +80,11 @@ public class MainActivity extends ListActivity {
             this.name = name;
         }
 
-        public int getLat() {
-            return lat;
-        }
-
-        public void setLat(int lat) {
-            this.lat = lat;
-        }
-
-        public int getLon() {
-            return lon;
-        }
-
-        public void setLon(int lon) {
-            this.lon = lon;
-        }
-
-        public int getDistance() {
+        public float getDistance() {
             return distance;
         }
 
-        public void setDistance(int distance) {
+        public void setDistance(float distance) {
             this.distance = distance;
         }
     }
@@ -116,13 +99,13 @@ public class MainActivity extends ListActivity {
             HttpPost post = new HttpPost(postURL);
             try {
                 List<NameValuePair> pairs = new ArrayList<NameValuePair>(1);
-                pairs.add(new BasicNameValuePair("GETALL", ""));
+                pairs.add(new BasicNameValuePair("GETALL", param[1]));
                 UrlEncodedFormEntity uefe = new UrlEncodedFormEntity(pairs);
                 post.setEntity(uefe);
                 // Send post.
                 HttpResponse res = client.execute(post);
                 if( res != null ) {
-                    //Log.i("RESPONSE", EntityUtils.toString(res.getEntity()));
+                    //Log.d("DBG", EntityUtils.toString(res.getEntity()));
                     is = res.getEntity().getContent();
                 }
             } catch( UnsupportedEncodingException uee ) {
@@ -198,18 +181,18 @@ public class MainActivity extends ListActivity {
         }
 
         public List<Profile> parser() {
-            String value;
 
             try {
                 String line;
-                while( (line = readLine()) != null && ! line.isEmpty() ) {
-                    String[] RowData = line.split(",");
-                    Profile p = new Profile();
-                    p.setId(Integer.parseInt(RowData[0]));
-                    p.setName(RowData[1]);
-                    p.setLat(Integer.parseInt(RowData[2]));
-                    p.setLon(Integer.parseInt(RowData[3]));
-                    profiles.add(p);
+                while( (line = readLine()) != null ) {
+                    if( ! line.isEmpty() ) {
+                        String[] RowData = line.split(",");
+                        Profile p = new Profile();
+                        p.setId(Integer.parseInt(RowData[0]));
+                        p.setName(RowData[1]);
+                        p.setDistance(Float.valueOf(RowData[2]));
+                        profiles.add(p);
+                    }
                 }
             } catch (IOException ex) {
                 // handle exception
@@ -243,11 +226,13 @@ public class MainActivity extends ListActivity {
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Service.LAYOUT_INFLATER_SERVICE);
             View rowView = inflater.inflate(R.layout.activity_main, parent, false);
 
-            TextView name = (TextView)rowView.findViewById(R.id.name);
             ImageView img = (ImageView)rowView.findViewById(R.id.picture);
+            TextView name = (TextView)rowView.findViewById(R.id.name);
+            TextView distance = (TextView)rowView.findViewById(R.id.distance);
 
             Profile p = (Profile)profiles.get(position);
             name.setText(p.getName());
+            distance.setText(String.valueOf(p.getDistance()));
 
             new GetPicture(img).execute(getResources().getString(R.string.URLServer) + p.getId());
 
