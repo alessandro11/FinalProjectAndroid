@@ -96,12 +96,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/textview_border"
-                android:hint="Email"
+                android:hint="Distancia"
                 android:paddingTop="6dp"
                 android:paddingBottom="8dp"
                 android:paddingLeft="6dp"
                 android:textSize="18sp"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:id="@+id/profileDistance" />
 
             <ImageView
                 android:visibility="invisible"
@@ -132,12 +133,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/textview_border"
-                android:hint="Telefone"
+                android:hint="Longitude"
                 android:paddingTop="6dp"
                 android:paddingBottom="8dp"
                 android:paddingLeft="6dp"
                 android:textSize="18sp"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:visibility="visible" />
 
             <ImageView
                 android:visibility="invisible"

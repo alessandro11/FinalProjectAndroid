@@ -25,5 +25,9 @@ public class Profile extends Activity {
         TextView name = (TextView) findViewById(R.id.profileName);
         name.setText(profile_name);
 
+        Float profile_distance = intent.getFloatExtra("profile_distance", 0);
+        TextView distance = (TextView) findViewById(R.id.profileDistance);
+        distance.setText(profile_name);
+
     }
 }

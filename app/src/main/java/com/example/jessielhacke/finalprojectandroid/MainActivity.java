@@ -249,6 +249,7 @@ public class MainActivity extends ListActivity {
         intent.setAction("android.intent.action.PROFILE");
         intent.putExtra("profile_id", profile.getId());
         intent.putExtra("profile_name", profile.getName());
+        intent.putExtra("profile_distance", profile.getDistance());
         startActivity(intent);
 
         super.onListItemClick(l, v, position, id);
