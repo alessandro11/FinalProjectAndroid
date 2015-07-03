@@ -232,7 +232,7 @@ public class MainActivity extends ListActivity {
 
             Profile p = (Profile)profiles.get(position);
             name.setText(p.getName());
-            distance.setText(String.valueOf(p.getDistance()) + " Km");
+            distance.setText(String.valueOf(p.getDistance()) + " m");
 
             new GetPicture(img).execute(getResources().getString(R.string.URLServer) + p.getId());
 
